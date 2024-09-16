@@ -72,9 +72,16 @@ for i in range(0, len(a), 1) :
 print(np.sqrt(norm))
 """
 
+"""
 w = np.array([1, 1])
 s = np.linalg.norm(w)
 
 w = w / s
 
 print(w)
+"""
+
+a = np.array([[1, 2, 3]]).T
+b = np.array([[4, 5, 6]])
+
+print(np.dot(a, b), np.linalg.norm(np.dot(a, b)))
