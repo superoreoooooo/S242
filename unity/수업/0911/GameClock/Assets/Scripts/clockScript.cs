@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class clockScript : MonoBehaviour
 {
-    bool btn_active;
+    public bool btn_active;
     public TextMeshProUGUI text_time;
     public TextMeshProUGUI btn_text;
 
     public float startTime;
-    private float timeRemaining;
+    public float timeRemaining;
 
 
     void Start()
