@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using OpenCover.Framework.Model;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class clockScript : MonoBehaviour
 {
@@ -50,7 +52,6 @@ public class clockScript : MonoBehaviour
         float pHW = (float)(pW * 0.5);
         float pHH = (float)(pH * 0.5);
 
-
         Rect clockRect = new Rect(pX, pY, pW, pH);
         float rot = (percent / 100) * 360;
         Vector2 centerPoint = new Vector2(pX + pHW, pY + pHH);
@@ -86,8 +87,6 @@ public class clockScript : MonoBehaviour
             GUIUtility.RotateAroundPivot(0, centerPoint);
             GUI.DrawTexture(clockRect, leftSide, ScaleMode.StretchToFill, true, 0);
         }
-
-
         GUI.DrawTexture(clockRect, shiny, ScaleMode.StretchToFill, true, 0);
     }
 
@@ -169,6 +168,20 @@ public class clockScript : MonoBehaviour
         {
             doCountDown();
         }
+
+        /**
+
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("btn"))
+        {
+            if (timeRemaining == startTime || timeRemaining <= 0f)
+            {
+                obj.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else
+            {
+                obj.transform.Rotate(new Vector3(0, 0, 1), 0.03f * (startTime - timeRemaining));
+            }
+        }*/
     }
 
     private void doCountDown()
