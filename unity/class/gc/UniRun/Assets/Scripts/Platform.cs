@@ -14,7 +14,7 @@ public class Platform : MonoBehaviour
     void Update()
     {
         transform.Translate(-Vector2.right * speed * Time.deltaTime);
-        if (transform.position.x >= -15f) {
+        if (transform.position.x <= -15f) {
             Destroy(gameObject);
         }
     }
