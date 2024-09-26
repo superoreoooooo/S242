@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform1: {fileID: 2769161705259645293, guid: 3d9c49ebec0eac3449296dfda95c3392, type: 3}
-  platform: {fileID: 1671242928466520, guid: f9fc9d007ca214ed9ad2949a47f59fb5, type: 3}
+  platform: {fileID: 0}
 --- !u!4 &1387162006
 Transform:
   m_ObjectHideFlags: 0
