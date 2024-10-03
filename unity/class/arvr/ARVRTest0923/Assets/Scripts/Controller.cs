@@ -7,8 +7,8 @@ public class ControllerScript : MonoBehaviour
     void Start()
     { // Set initial cube's position in front of user
         transform.position = sceneCamera.transform.position + sceneCamera.transform.forward * 3.0f;
-    } 
-    
+    }
+
     // Update is called once per frame
     void Update()
     { // Define step value for animation
@@ -27,6 +27,11 @@ public class ControllerScript : MonoBehaviour
         { // Assign left controller's position and rotation to cube
             transform.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.LTouch);
             transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
+        }
+        if (OVRInput.Get(OVRInput.Axis1D.SecondaryHandTrigger) > 0.0f)
+        {
+            transform.position = OVRInput.GetLocalControllerPosition(OVRInput.Controller.RTouch);
+            transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.RTouch);
         }
     }
 

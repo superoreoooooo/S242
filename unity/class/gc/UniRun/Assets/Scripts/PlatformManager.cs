@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformManager : MonoBehaviour
 {
-    private float spawnTime = 2f;
+    private float spawnTime = 1.5f;
     private float timeNow = 0f;
 
     public GameObject platform1;
@@ -29,10 +29,10 @@ public class PlatformManager : MonoBehaviour
         int rd = Random.Range(0, 2);
         switch (rd) {
             case 0:
-                Instantiate(platform1, new Vector3(15, Random.Range(-3, 1.2f), 0), transform.rotation);
+                Instantiate(platform1, new Vector3(15, Random.Range(-4, 1.2f), 0), transform.rotation);
             break;
             case 1:
-                Instantiate(platform1, new Vector3(15, Random.Range(-3, 1.2f), 0), transform.rotation);
+                Instantiate(platform1, new Vector3(15, Random.Range(-4, 1.2f), 0), transform.rotation);
             break;
         }
     }
