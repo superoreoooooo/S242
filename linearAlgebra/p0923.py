@@ -39,13 +39,15 @@ print(getVertical(v, w) + getHorizontal(v, w))
 print(v.dot(getVertical(v, w)))
 """
 
-t = np.array([3, 1])
+t = np.array([3, 4])
 r = np.array([1, 2])
 
 def para(t, r) :
     return r * (t.dot(r) / r.dot(r))
 
-def orth(r, para) :
-    return r - para
+def orth(t, para) :
+    return t - para
 
-print(r.dot(orth(r, para(t, r))))
+print(orth(t, para(t, r)))
+
+print(np.isclose(para(t, r).dot(orth(t, para(t, r))), 0))
