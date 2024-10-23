@@ -13,7 +13,6 @@ public class BackGroundLoop : MonoBehaviour
         width = bgCollider.size.x;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position = (Vector2) transform.position - new Vector2(0.1f, 0f);

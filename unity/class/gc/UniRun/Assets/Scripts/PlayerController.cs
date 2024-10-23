@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,33 +6,33 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false;
     private bool isDead = false;
     private AudioSource playerAudio;
-
     public Animator animator;
-    private Rigidbody2D rb;
+    private Rigidbody2D rb2d;
     private int jumpCnt = 0;
-
-    [SerializeField]
-    private float jumpForce;
+    public float jumpForce = 700f;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (isDead) return;
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+
+        if (Input.GetMouseButtonDown(0) && jumpCnt < 2)
         {
-            Jump();
-        } else if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {
-            if (rb.velocity.y > 0) {
-                rb.velocity = rb.velocity * 0.5f;
-            }
+            jumpCnt += 1;
+            rb2d.velocity = Vector2.zero;
+            rb2d.AddForce(new Vector2(0, jumpForce));
+            playerAudio.Play();
+        } else if (Input.GetMouseButtonUp(0) && rb2d.velocity.y > 0)
+        {
+            rb2d.velocity = rb2d.velocity * 0.5f;
         }
+
         animator.SetBool("Grounded", isGrounded);
     }
 
@@ -44,6 +41,19 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "Dead" && !isDead) {
             Die();
         }
+        else if (collision.tag == "Obstacle" && health > 0 && !isDead)
+        {
+            gainDamage(1);
+        }
+    }
+
+    public int health = 3;
+
+    private void gainDamage(int amount)
+    {
+        health -= amount;
+        GameManager.instance.onPlayerGainDamage(health);
+        if (health <= 0) Die();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -56,34 +66,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision) {
         isGrounded = false;
-        jumpCnt = 0;
     }
-
 
     private void Die() {
         animator.SetTrigger("Die");
         playerAudio.clip = deathClip;
         playerAudio.Play();
-        rb.velocity = Vector2.zero;
+        rb2d.velocity = Vector2.zero;
         isDead = true;
-    }
 
-    public void Jump()
-    {
-        int max = 2;
-
-        if (jumpCnt < max)
-        {
-            jumpCnt++;
-        }
-        else return;
-        if (jumpCnt <= max)
-        {
-            rb.velocity = rb.velocity * 0.5f;
-            //rb.velocity = new Vector2(0, jumpForce);
-            rb.AddForce(new Vector2(0, jumpForce));
-            animator.SetBool("Grounded", isGrounded);
-            playerAudio.Play();
-        }
+        GameManager.instance.onPlayerDead();
     }
 }

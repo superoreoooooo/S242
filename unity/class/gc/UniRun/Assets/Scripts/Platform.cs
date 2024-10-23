@@ -4,18 +4,30 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    private float speed = 10f;
+    public GameObject[] obstacles;
+    private bool stepped = false;
 
-    void Start()
+    private void OnEnable()
     {
-        
+        stepped = false;
+        for (int i = 0; i < obstacles.Length; i++)
+        {
+            if (Random.Range(0, 3) == 0)
+            {
+                obstacles[i].SetActive(true);
+            } else
+            {
+                obstacles[i].SetActive(false);
+            }
+        }
     }
 
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        transform.Translate(-Vector2.right * speed * Time.deltaTime);
-        if (transform.position.x <= -15f) {
-            Destroy(gameObject);
+        if (collision.collider.tag == "Player" && !stepped)
+        {
+            stepped = true;
+            GameManager.instance.AddScore(1);
         }
     }
 }
