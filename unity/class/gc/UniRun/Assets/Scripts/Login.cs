@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Login : MonoBehaviour
 {
@@ -49,6 +50,11 @@ public class Login : MonoBehaviour
 
         yield return www;
 
+
         Debug.Log(www.text);
+
+        if (www.text == "login successlogin success" || www.text == "Login success") {
+            SceneManager.LoadScene("SampleScene");
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     public bool isGameover = false;
     public TextMeshProUGUI scoreText;
     public GameObject gameoverUI;
+
+    private string userInputName;
 
     private int score = 0;
 
@@ -44,6 +47,7 @@ public class GameManager : MonoBehaviour
             gameTime.text = string.Format("{0:00}:{1:00}", Mathf.FloorToInt((Time.time - gameStartedTime) / 60), Mathf.FloorToInt((Time.time - gameStartedTime) % 60));
         }
 
+        userInputName = Login.userNameData;
         if (isGameover && Input.GetMouseButtonDown(0))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -88,7 +92,36 @@ public class GameManager : MonoBehaviour
             obj.SetActive(false);
         }
 
+        insert(score, userInputName);
+
         gameData.text = string.Format($"Score : {score}" + "\nTime : {0:00}:{1:00}", Mathf.FloorToInt((Time.time - gameStartedTime) / 60), Mathf.FloorToInt((Time.time - gameStartedTime) % 60));
+    }
+
+    public void insert(int score, string username) {
+        string addr = "http://127.0.0.1/insert.php";
+        WWWForm form = new WWWForm();
+        form.AddField("Score", score);
+        form.AddField("UserName", username);
+
+        WWW wwwURL = new WWW(addr, form);
+
+        StartCoroutine(rankingUI());
+    }
+
+    private IEnumerator rankingUI() {
+        string url = "http://127.0.0.1/compare.php";
+
+        WWW www = new WWW(url);
+
+        yield return www;
+
+        if (www.isDone) {
+            if (www.error == null) {
+                Debug.Log("Receive Data : " + www.text);
+            } else {
+                Debug.Log("error : " + www.error);
+            }
+        }
     }
 
     public TextMeshProUGUI playerHealth;
