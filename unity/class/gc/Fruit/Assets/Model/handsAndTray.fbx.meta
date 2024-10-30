@@ -1,23 +1,53 @@
 fileFormatVersion: 2
 guid: f0aeacded4220394ea9a53b1af69d9b7
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Hands_Mesh
-    100002: //RootNode
-    100004: Tray_Mesh
-    400000: Hands_Mesh
-    400002: //RootNode
-    400004: Tray_Mesh
-    2300000: Hands_Mesh
-    2300002: Tray_Mesh
-    3300000: Hands_Mesh
-    3300002: Tray_Mesh
-    4300000: Tray_Mesh
-    4300002: Hands_Mesh
-    6400000: Hands_Mesh
-    6400002: Tray_Mesh
-    11100000: //RootNode
+  serializedVersion: 22200
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Hands_Mesh
+  - first:
+      1: 100002
+    second: //RootNode
+  - first:
+      1: 100004
+    second: Tray_Mesh
+  - first:
+      4: 400000
+    second: Hands_Mesh
+  - first:
+      4: 400002
+    second: //RootNode
+  - first:
+      4: 400004
+    second: Tray_Mesh
+  - first:
+      23: 2300000
+    second: Hands_Mesh
+  - first:
+      23: 2300002
+    second: Tray_Mesh
+  - first:
+      33: 3300000
+    second: Hands_Mesh
+  - first:
+      33: 3300002
+    second: Tray_Mesh
+  - first:
+      43: 4300000
+    second: Tray_Mesh
+  - first:
+      43: 4300002
+    second: Hands_Mesh
+  - first:
+      64: 6400000
+    second: Hands_Mesh
+  - first:
+      64: 6400002
+    second: Tray_Mesh
+  - first:
+      111: 11100000
+    second: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -30,7 +60,7 @@ ModelImporter:
       name: No Name
     second: {fileID: 2100000, guid: 034d3bc78a73090458096689b3601b79, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 3
     materialSearch: 1
     materialLocation: 0
@@ -39,6 +69,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -62,34 +93,49 @@ ModelImporter:
     globalScale: 0.03
     meshCompression: 0
     addColliders: 1
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 0
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    strictVertexDataChecks: 0
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
-    tangentImportMode: 1
-    normalCalculationMode: 0
+    normalSmoothAngle: 51
+    normalImportMode: 1
+    tangentImportMode: 2
+    normalCalculationMode: 1
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human: []
     skeleton: []
     armTwist: 0.5
@@ -99,14 +145,19 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.03
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 1
   humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
